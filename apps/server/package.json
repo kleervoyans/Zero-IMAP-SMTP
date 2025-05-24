@@ -41,7 +41,9 @@
     "sanitize-html": "^2.16.0",
     "superjson": "^2.2.2",
     "wrangler": "^4.14.3",
-    "zod": "^3.24.4"
+    "zod": "^3.24.4",
+    "imapflow": "^1.0.150",
+    "nodemailer": "^6.9.13"
   },
   "devDependencies": {
     "@types/node": "^22.9.0"
