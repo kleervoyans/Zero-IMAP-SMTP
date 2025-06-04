@@ -1,0 +1,14 @@
+ALTER TABLE "mail0_connection" ALTER COLUMN "access_token" DROP NOT NULL;
+ALTER TABLE "mail0_connection" ALTER COLUMN "scope" DROP NOT NULL;
+ALTER TABLE "mail0_connection" ALTER COLUMN "expires_at" DROP NOT NULL;
+ALTER TABLE "mail0_connection" ADD COLUMN "encrypted_password" text;
+ALTER TABLE "mail0_connection" ADD COLUMN "imap_host" text;
+ALTER TABLE "mail0_connection" ADD COLUMN "imap_port" integer;
+ALTER TABLE "mail0_connection" ADD COLUMN "imap_secure" boolean;
+ALTER TABLE "mail0_connection" ADD COLUMN "imap_require_tls" boolean;
+ALTER TABLE "mail0_connection" ADD COLUMN "smtp_host" text;
+ALTER TABLE "mail0_connection" ADD COLUMN "smtp_port" integer;
+ALTER TABLE "mail0_connection" ADD COLUMN "smtp_secure" boolean;
+ALTER TABLE "mail0_connection" ADD COLUMN "pop3_host" text;
+ALTER TABLE "mail0_connection" ADD COLUMN "pop3_port" integer;
+ALTER TABLE "mail0_connection" ADD COLUMN "pop3_tls" boolean;

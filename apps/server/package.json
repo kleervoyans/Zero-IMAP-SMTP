@@ -43,7 +43,8 @@
     "wrangler": "^4.14.3",
     "zod": "^3.24.4",
     "imapflow": "^1.0.150",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "poplib": "^0.1.7"
   },
   "devDependencies": {
     "@types/node": "^22.9.0"

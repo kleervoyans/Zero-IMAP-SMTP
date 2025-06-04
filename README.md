@@ -137,7 +137,7 @@ bun install
      BETTER_AUTH_SECRET=your_secret_key
      ```
 
-2. **Google OAuth Setup** (Required for Gmail integration)
+2. **Google OAuth Setup** (Optional - only needed for Gmail integration)
 
    - Go to [Google Cloud Console](https://console.cloud.google.com)
    - Create a new project
@@ -176,9 +176,9 @@ Copy `.env.example` located in the project folder to `.env` in the same folder a
 # Auth
 BETTER_AUTH_SECRET=     # Required: Secret key for authentication
 
-# Google OAuth (Required for Gmail integration)
-GOOGLE_CLIENT_ID=       # Required for Gmail integration
-GOOGLE_CLIENT_SECRET=   # Required for Gmail integration
+# Google OAuth (Optional)
+GOOGLE_CLIENT_ID=       # Only required for Gmail integration
+GOOGLE_CLIENT_SECRET=   # Only required for Gmail integration
 
 # Database
 DATABASE_URL=           # Required: PostgreSQL connection string for backend connection
@@ -186,6 +186,14 @@ DATABASE_URL=           # Required: PostgreSQL connection string for backend con
 # Redis
 REDIS_URL=              # Redis URL for caching (http://localhost:8079 for local dev)
 REDIS_TOKEN=            # Redis token (upstash-local-token for local dev)
+
+# IMAP/SMTP (for custom mail servers)
+IMAP_HOST=
+IMAP_PORT=
+IMAP_SECURE=
+SMTP_HOST=
+SMTP_PORT=
+SMTP_SECURE=
 ```
 
 For local development a connection string example is provided in the `.env.example` file located in the same folder as the database.

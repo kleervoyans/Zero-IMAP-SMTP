@@ -19,6 +19,9 @@ const genericConnectionInputSchema = z.object({
   smtpHost: z.string().min(1, "SMTP host is required"),
   smtpPort: z.number().int().positive("SMTP port must be a positive integer"),
   smtpSecure: z.boolean(), // true for SMTPS, false for STARTTLS
+  pop3Host: z.string().optional(),
+  pop3Port: z.number().int().positive().optional(),
+  pop3Tls: z.boolean().optional(),
 });
 
 // Placeholder for an encryption function - CRITICAL: IMPLEMENT SECURELY!
@@ -116,6 +119,9 @@ export const connectionsRouter = router({
               smtpHost: input.smtpHost,
               smtpPort: input.smtpPort,
               smtpSecure: input.smtpSecure,
+              pop3Host: input.pop3Host || null,
+              pop3Port: input.pop3Port || null,
+              pop3Tls: input.pop3Tls || null,
               // smtpRequireTLS is often implicit in nodemailer based on port/secure
 
               // Set OAuth fields to null or appropriate defaults for non-OAuth connections
