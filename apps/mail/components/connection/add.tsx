@@ -9,7 +9,7 @@ import {
 import { useBilling } from '@/hooks/use-billing';
 import { emailProviders } from '@/lib/constants';
 import { authClient } from '@/lib/auth-client';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Plus, UserPlus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Button } from '../ui/button';
@@ -30,6 +30,7 @@ export const AddConnectionDialog = ({
   const t = useTranslations();
 
   const pathname = usePathname();
+  const router = useRouter();
   const canCreateConnection = useMemo(() => {
     if (!connections?.remaining && !connections?.unlimited) return false;
     return (connections?.unlimited && !connections?.remaining) || (connections?.remaining ?? 0) > 0;
@@ -107,12 +108,16 @@ export const AddConnectionDialog = ({
                 disabled={!canCreateConnection}
                 variant="outline"
                 className="h-24 w-full flex-col items-center justify-center gap-2"
-                onClick={async () =>
+                onClick={async () => {
+                  if (provider.providerId === 'generic_imap_smtp') {
+                    router.push('/settings/connections/add/generic');
+                    return;
+                  }
                   await authClient.linkSocial({
                     provider: provider.providerId,
                     callbackURL: `${process.env.NEXT_PUBLIC_APP_URL}/${pathname}`,
-                  })
-                }
+                  });
+                }}
               >
                 <svg viewBox="0 0 24 24" className="h-12 w-12">
                   <path fill="currentColor" d={provider.icon} />

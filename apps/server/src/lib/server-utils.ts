@@ -108,6 +108,13 @@ export const connectionToDriver = async ( // Made async for potential decryption
         secure: connDetails.smtpSecure !== undefined ? connDetails.smtpSecure : false, // Placeholder (false for STARTTLS on 587)
         // auth is handled by top-level email/password
       },
+      pop3: connDetails.pop3Host
+        ? {
+            host: connDetails.pop3Host,
+            port: connDetails.pop3Port || 110,
+            tls: connDetails.pop3Tls !== undefined ? connDetails.pop3Tls : false,
+          }
+        : undefined,
     };
     driverConfig = { auth: authConfig, c };
   } else if (connDetails.providerId === 'google' || connDetails.providerId === 'microsoft') {
